@@ -104,7 +104,6 @@ def get_all_tracks_of_artist(spotify_client: spotipy.Spotify, artist_id: str) ->
     
     for album in tqdm(albums, desc="Fetching album tracks"):
         album_id = safe_get(album, 'id')
-        print(album_id)
         tracks = get_album_tracks(spotify_client, album_id)
         tracks = [{**track, 'spotify_album_id': album_id} for track in tracks]
         all_tracks.extend(tracks)
