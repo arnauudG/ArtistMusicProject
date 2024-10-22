@@ -74,7 +74,7 @@ def build_genius_artist_data(genius_artist_search_result: Dict[str, Any]) -> Dic
             'genius_is_verified': safe_get(genius_artist_search_result, 'is_verified'),
             'genius_tracks': [
                 build_genius_artist_track(track)
-                for track in tqdm(safe_get(genius_artist_search_result, 'songs', {}))
+                for track in tqdm(safe_get(genius_artist_search_result, 'songs', {}), desc= "Processing tracks")
             ]
         }
     except Exception as e:
